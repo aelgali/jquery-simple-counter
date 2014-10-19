@@ -5,15 +5,30 @@
 	</head>
 	<body>
 		<h1>Simple Counter Example</h1>
+		<div id="counterContainer">
+			
+		</div>
+		<div id="messages">
+			
+		</div>
+
 		<script type="text/javascript">
 		$(document).ready(function() {
 			console.log('document loaded');
-			var counter = new Counter();
-			console.log(counter.currnentValue);
-			counter.currnentValue = 10;
+			var counter = new Counter({startValue: 10, htmlEl: '#counterContainer', callback: myCallback});
 			console.log(counter.currnentValue);
 			counter.start();
+			setTimeout(function() {
+				counter.stop();
+				counter.start();
+			}, 5000);
+
+			function myCallback(scope) {
+				console.log(scope);
+				$('#messages').html(scope);
+			}
 		});
+
 		</script>
 	</body>
 </html>
