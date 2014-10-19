@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="./js/simple-counter.js"></script>
+	</head>
+	<body>
+		<h1>Simple Counter Example</h1>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			console.log('document loaded');
+			var counter = new Counter();
+			console.log(counter.currnentValue);
+			counter.currnentValue = 10;
+			console.log(counter.currnentValue);
+			counter.start();
+		});
+		</script>
+	</body>
+</html>
