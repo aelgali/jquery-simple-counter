@@ -8,6 +8,11 @@
 		<div id="counterContainer">
 			
 		</div>
+		<div>
+			<button id="startBtn">Start</button>
+			<button id="stopBtn">Stop</button>
+			<button id="resetBtn">Reset</button>
+		</div>
 		<div id="messages">
 			
 		</div>
@@ -16,17 +21,29 @@
 		$(document).ready(function() {
 			console.log('document loaded');
 			var counter = new Counter({startValue: 10, htmlEl: '#counterContainer', callback: myCallback});
-			console.log(counter.currnentValue);
-			counter.start();
-			setTimeout(function() {
-				counter.stop();
-				counter.start();
-			}, 5000);
+			// console.log(counter.currnentValue);
+			// counter.start();
+			// setTimeout(function() {
+			// 	counter.stop();
+			// 	counter.start();
+			// }, 5000);
 
 			function myCallback(scope) {
 				console.log(scope);
-				$('#messages').html(scope);
+				$('#messages').append('tick ');
 			}
+
+			$('#startBtn').on('click', function(){
+				counter.start();
+			});
+
+			$('#stopBtn').on('click', function() {
+				counter.stop();
+			});
+
+			$('#resetBtn').on('click', function() {
+				counter.reset();
+			});
 		});
 
 		</script>
