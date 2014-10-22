@@ -5,6 +5,9 @@
 	</head>
 	<body>
 		<h1>Simple Counter Example</h1>
+		<div>
+			Start value: <input id="startValue" type="number" required/>
+		</div>
 		<div id="counterContainer">
 			
 		</div>
@@ -20,7 +23,9 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 			console.log('document loaded');
-			var counter = new Counter({startValue: 10, htmlEl: '#counterContainer', callback: myCallback});
+			
+
+			var counter = new Counter({htmlEl: '#counterContainer', startValue : 0, callback: myCallback});
 			// console.log(counter.currnentValue);
 			// counter.start();
 			// setTimeout(function() {
@@ -29,11 +34,15 @@
 			// }, 5000);
 
 			function myCallback(scope) {
-				console.log(scope);
 				$('#messages').append('tick ');
+					console.log(scope.getCurrentValue());
 			}
 
 			$('#startBtn').on('click', function(){
+				console.log('inputvalue');
+				console.log($('#startValue').val());
+				var startValue = $('#startValue') && parseInt($('#startValue').val()) > 0 ? parseInt($('#startValue').val()) : 0;
+				counter.setStartValue(startValue);
 				counter.start();
 			});
 
